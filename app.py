@@ -663,7 +663,7 @@ with tab_home:
     st.markdown(
         """
 <div class="glass-card">
-    <div style="text-align: justify; font-size: 1.01rem; line-height: 1.65; color: #1e293b;">
+    <div style="text-align: justify; font-size: 1.01rem; line-height: 1.65; color: var(--text-main);">
         AERIS (Atmospheric Energy Radiation Interaction Simulator) is an interface developed with
         the aim of facilitating the use of the <strong>MCEq (Matrix Cascade Equation)</strong>
         code in studies of atmospheric cascades induced by cosmic rays.
@@ -698,8 +698,8 @@ with tab_tools:
     st.markdown(
         """
 <div class="glass-card">
-    <h3 style="margin-top: 0; margin-bottom: 8px; color: #0f172a; text-align: center;">AERIS</h3>
-    <p style="margin-top: 0; color: #334155; text-align: center;">
+    <h3 style="margin-top: 0; margin-bottom: 8px; color: var(--text-main); text-align: center;">AERIS</h3>
+    <p style="margin-top: 0; color: var(--text-main); text-align: center;">
         Configure the simulation parameters and generate atmospheric particle flux results.
     </p>
 </div>
@@ -939,7 +939,7 @@ with tab_contact:
     st.markdown(
         """
 <div class="footer">
-    <h3 style="margin: 0 0 8px 0; color: #0f172a;">Contact and Resources</h3>
+    <h3 style="margin: 0 0 8px 0; color: var(--text-main);">Contact and Resources</h3>
     <div class="contact-links">
         <a class="contact-pill" href="https://mceq.readthedocs.io/en/latest/index.html" target="_blank" title="MCEq Documentation">
             <i class="fas fa-file-alt"></i> MCEq Documentation
