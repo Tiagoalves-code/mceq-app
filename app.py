@@ -496,6 +496,10 @@ div[data-baseweb="checkbox"] input {
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
     background: var(--button-bg-hover) !important;
 }
+.sim-output-title{
+  text-align: center;
+  color: var(--text-main);
+}
 
 .stDownloadButton > button {
     background: var(--download-bg) !important;
@@ -906,9 +910,7 @@ with tab_tools:
     with center_area:
         st.markdown(
             """
-        <h3 style="text-align: center; color: #0f172a;">
-        Simulation Output
-        </h3>
+        <h3 class="sim-output-title">Simulation Output</h3>
     """,
             unsafe_allow_html=True,
         )
