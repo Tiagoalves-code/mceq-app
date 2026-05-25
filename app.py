@@ -155,22 +155,84 @@ st.markdown(
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
 
 :root {
+    color-scheme: light dark;
+
     --bg-1: #f6f9ff;
     --bg-2: #eef4ff;
     --card: #ffffff;
     --line: #dbeafe;
     --text-main: #0f172a;
     --text-soft: #334155;
+    --text-inverse: #f8fafc;
+    --sidebar-text: #1e293b;
+
     --accent-1: #2563eb;
     --accent-2: #0284c7;
     --hover: #1d4ed8;
+
+    --tooltip-bg: #1e293b;
+    --tooltip-border: rgba(148, 163, 184, 0.75);
+
+    --input-bg: #ffffff;
+    --input-border: #bfdbfe;
+    --input-text: #0f172a;
+
+    --tab-bg: rgba(239, 246, 255, 0.95);
+    --tab-active-bg: linear-gradient(90deg, rgba(14, 165, 233, 0.18), rgba(59, 130, 246, 0.2));
+
+    --button-bg: linear-gradient(90deg, #3b82f6, #2563eb);
+    --button-bg-hover: linear-gradient(90deg, #2563eb, #1d4ed8);
+    --button-text: #f8fafc;
+
+    --download-bg: linear-gradient(90deg, #0ea5e9, #0284c7);
+
+    --alert-bg: #eff6ff;
+    --alert-border: #bfdbfe;
+    --alert-text: #0f172a;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-1: #0b1220;
+        --bg-2: #111b2e;
+        --card: #111a2c;
+        --line: #26344d;
+        --text-main: #e2e8f0;
+        --text-soft: #cbd5e1;
+        --text-inverse: #f8fafc;
+        --sidebar-text: #e2e8f0;
+
+        --accent-1: #60a5fa;
+        --accent-2: #38bdf8;
+        --hover: #93c5fd;
+
+        --tooltip-bg: #0f172a;
+        --tooltip-border: rgba(148, 163, 184, 0.5);
+
+        --input-bg: #0f172a;
+        --input-border: #334155;
+        --input-text: #e2e8f0;
+
+        --tab-bg: rgba(15, 23, 42, 0.85);
+        --tab-active-bg: linear-gradient(90deg, rgba(56, 189, 248, 0.2), rgba(59, 130, 246, 0.22));
+
+        --button-bg: linear-gradient(90deg, #2563eb, #1d4ed8);
+        --button-bg-hover: linear-gradient(90deg, #1d4ed8, #1e40af);
+        --button-text: #f8fafc;
+
+        --download-bg: linear-gradient(90deg, #0284c7, #0369a1);
+
+        --alert-bg: #17243a;
+        --alert-border: #2b436a;
+        --alert-text: #e2e8f0;
+    }
 }
 
 .stApp {
     background:
         radial-gradient(circle at 10% 12%, rgba(14, 165, 233, 0.1), transparent 30%),
         radial-gradient(circle at 87% 4%, rgba(37, 99, 235, 0.09), transparent 28%),
-        linear-gradient(165deg, var(--bg-2) 0%, var(--bg-1) 40%, #ffffff 100%);
+        linear-gradient(165deg, var(--bg-2) 0%, var(--bg-1) 40%, var(--bg-1) 100%);
     color: var(--text-main);
     font-family: "Space Grotesk", sans-serif;
 }
@@ -183,32 +245,32 @@ st.markdown(
 [data-testid="stSidebar"] {
     background:
         radial-gradient(circle at 18% 6%, rgba(14, 165, 233, 0.12), transparent 30%),
-        linear-gradient(180deg, #f8fbff 0%, #eff6ff 100%);
-    border-right: 1px solid #dbeafe;
+        linear-gradient(180deg, color-mix(in srgb, var(--bg-1) 80%, #ffffff 20%) 0%, var(--bg-2) 100%);
+    border-right: 1px solid var(--line);
 }
 
 [data-testid="stSidebar"] * {
-    color: #1e293b !important;
+    color: var(--sidebar-text) !important;
 }
 
 [data-testid="stSidebar"] .stImage img {
     border-radius: 14px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid color-mix(in srgb, var(--line) 70%, #94a3b8 30%);
     box-shadow: 0 8px 18px rgba(51, 65, 85, 0.12);
 }
 
 a {
-    color: #1d4ed8 !important;
+    color: var(--accent-1) !important;
     text-decoration-thickness: 2px;
 }
 
 a:hover {
-    color: #1e40af !important;
+    color: var(--hover) !important;
 }
 
 .hero-wrap {
-    border: 1px solid #dbeafe;
-    background: linear-gradient(145deg, #ffffff, #f8fbff);
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 80%, var(--bg-2) 20%));
     border-radius: 18px;
     padding: 20px 24px;
     box-shadow: 0 10px 24px rgba(30, 41, 59, 0.08);
@@ -219,19 +281,19 @@ a:hover {
     margin: 0;
     font-size: 2rem;
     letter-spacing: 0.01em;
-    color: #0f172a;
+    color: var(--text-main);
 }
 
 .hero-subtitle {
     margin: 8px 0 0 0;
-    color: #1e293b;
+    color: var(--text-soft);
     font-weight: 500;
     line-height: 1.5;
 }
 
 .hero-line {
     margin: 6px 0 0 0;
-    color: #1e293b;
+    color: var(--text-soft);
     font-size: 1.2rem;
     font-weight: 600;
     line-height: 1.45;
@@ -240,7 +302,7 @@ a:hover {
 .hero-line-game {
     font-size: 1.28rem;
     font-weight: 700;
-    color: #1d4ed8;
+    color: var(--accent-1);
 }
 
 .aeris-title {
@@ -248,7 +310,7 @@ a:hover {
     font-family: "Orbitron", sans-serif;
     font-size: 3rem;
     margin: 0;
-    color: #0f172a;
+    color: var(--text-main);
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
@@ -257,7 +319,7 @@ a:hover {
     text-align: center;
     margin: 6px 0 18px 0;
     font-size: 1rem;
-    color: #334155;
+    color: var(--text-soft);
     font-weight: 500;
 }
 
@@ -269,8 +331,8 @@ hr.aeris-separator {
 }
 
 div[data-baseweb="tab-list"] {
-    background: rgba(239, 246, 255, 0.95);
-    border: 1px solid #dbeafe;
+    background: var(--tab-bg);
+    border: 1px solid var(--line);
     border-radius: 16px;
     padding: 6px;
     margin-bottom: 20px;
@@ -278,7 +340,7 @@ div[data-baseweb="tab-list"] {
 
 button[data-baseweb="tab"] {
     border-radius: 12px !important;
-    color: #334155 !important;
+    color: var(--text-soft) !important;
     font-size: 1.02rem !important;
     font-weight: 600 !important;
     min-height: 48px !important;
@@ -286,14 +348,14 @@ button[data-baseweb="tab"] {
 }
 
 button[data-baseweb="tab"][aria-selected="true"] {
-    background: linear-gradient(90deg, rgba(14, 165, 233, 0.18), rgba(59, 130, 246, 0.2)) !important;
-    color: #0f172a !important;
+    background: var(--tab-active-bg) !important;
+    color: var(--text-main) !important;
     box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.5);
 }
 
 .glass-card {
-    border: 1px solid #dbeafe;
-    background: linear-gradient(145deg, #ffffff, #f8fbff);
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 82%, var(--bg-2) 18%));
     border-radius: 18px;
     padding: 20px 22px;
     box-shadow: 0 10px 22px rgba(30, 41, 59, 0.08);
@@ -302,13 +364,13 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .section-title {
     font-weight: 600;
     font-size: 1.06rem;
-    color: #0f172a;
+    color: var(--text-main);
     margin-bottom: 0.35rem;
 }
 
 .section-text {
     font-size: 0.98rem;
-    color: #334155;
+    color: var(--text-soft);
 }
 
 .label-with-help {
@@ -327,11 +389,11 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .tooltiptext {
     visibility: hidden;
     width: 250px;
-    background-color: #1e293b;
-    color: #f8fafc;
+    background-color: var(--tooltip-bg);
+    color: var(--text-inverse);
     text-align: left;
     padding: 9px;
-    border: 1px solid rgba(148, 163, 184, 0.7);
+    border: 1px solid var(--tooltip-border);
     border-radius: 8px;
     position: absolute;
     z-index: 50;
@@ -352,7 +414,7 @@ button[data-baseweb="tab"][aria-selected="true"] {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    background: linear-gradient(150deg, #0284c7, #2563eb);
+    background: linear-gradient(150deg, var(--accent-2), var(--accent-1));
     color: white;
     font-size: 12px;
     font-weight: bold;
@@ -366,11 +428,11 @@ button[data-baseweb="tab"][aria-selected="true"] {
 .tooltip-icon .tooltiptext {
     visibility: hidden;
     width: 270px;
-    background-color: #1e293b;
-    color: #fff;
+    background-color: var(--tooltip-bg);
+    color: var(--text-inverse);
     text-align: left;
     padding: 9px;
-    border: 1px solid rgba(148, 163, 184, 0.75);
+    border: 1px solid var(--tooltip-border);
     border-radius: 8px;
     position: absolute;
     z-index: 50;
@@ -394,20 +456,33 @@ div[data-baseweb="radio"] span,
 div[data-baseweb="checkbox"] label,
 div[data-baseweb="checkbox"] span,
 div[data-baseweb="select"] *,
-section[data-testid="stSidebar"] * {
-  color: var(--text-main) !important;
+div[data-baseweb="input"] *,
+div[data-baseweb="popover"] *,
+section[data-testid="stSidebar"] *,
+div[data-testid="stMarkdownContainer"] p,
+div[data-testid="stMarkdownContainer"] li {
+    color: var(--text-main) !important;
+}
+
+div[data-baseweb="radio"] input,
+div[data-baseweb="checkbox"] input {
+    accent-color: var(--accent-1);
 }
 
 .stTextInput input {
-    background-color: #ffffff !important;
-    border: 1px solid #bfdbfe !important;
-    color: #0f172a !important;
+    background-color: var(--input-bg) !important;
+    border: 1px solid var(--input-border) !important;
+    color: var(--input-text) !important;
     border-radius: 10px !important;
 }
 
+.stTextInput input::placeholder {
+    color: color-mix(in srgb, var(--input-text) 65%, transparent) !important;
+}
+
 .stButton > button {
-    background: linear-gradient(90deg, #3b82f6, #2563eb) !important;
-    color: #f8fafc !important;
+    background: var(--button-bg) !important;
+    color: var(--button-text) !important;
     border-radius: 999px !important;
     padding: 0.72rem 1rem !important;
     border: 1px solid rgba(37, 99, 235, 0.25) !important;
@@ -419,21 +494,33 @@ section[data-testid="stSidebar"] * {
 .stButton > button:hover {
     transform: translateY(-1px);
     box-shadow: 0 10px 20px rgba(37, 99, 235, 0.28);
-    background: linear-gradient(90deg, #2563eb, #1d4ed8) !important;
+    background: var(--button-bg-hover) !important;
 }
 
 .stDownloadButton > button {
-    background: linear-gradient(90deg, #0ea5e9, #0284c7) !important;
+    background: var(--download-bg) !important;
     color: white !important;
     border-radius: 999px !important;
     border: 1px solid rgba(14, 165, 233, 0.35) !important;
 }
 
+/* Alertas Streamlit visíveis em claro/escuro */
+div[data-testid="stAlertContainer"] {
+    background: var(--alert-bg) !important;
+    border: 1px solid var(--alert-border) !important;
+    border-radius: 12px !important;
+}
+
+div[data-testid="stAlertContainer"],
+div[data-testid="stAlertContainer"] * {
+    color: var(--alert-text) !important;
+}
+
 .footer {
     margin-top: 1.5rem;
     padding: 1.4rem;
-    border: 1px solid #dbeafe;
-    background: linear-gradient(145deg, #ffffff, #f8fbff);
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card) 82%, var(--bg-2) 18%));
     border-radius: 18px;
     text-align: center;
 }
@@ -448,12 +535,12 @@ section[data-testid="stSidebar"] * {
 
 .social-link {
     font-size: 25px;
-    color: #334155 !important;
+    color: var(--text-soft) !important;
     transition: all 0.2s ease-in-out;
 }
 
 .social-link:hover {
-    color: #1d4ed8 !important;
+    color: var(--accent-1) !important;
     transform: translateY(-2px);
 }
 
@@ -465,12 +552,12 @@ section[data-testid="stSidebar"] * {
 .tooltiptext-footer {
     visibility: hidden;
     width: 155px;
-    background-color: #1e293b;
-    color: #f8fafc;
+    background-color: var(--tooltip-bg);
+    color: var(--text-inverse);
     text-align: center;
     padding: 6px;
     border-radius: 6px;
-    border: 1px solid rgba(148, 163, 184, 0.75);
+    border: 1px solid var(--tooltip-border);
     position: absolute;
     z-index: 30;
     bottom: 140%;
@@ -488,7 +575,7 @@ section[data-testid="stSidebar"] * {
 
 .contact-copy {
     margin-top: 14px;
-    color: #334155;
+    color: var(--text-soft);
     font-size: 0.95rem;
 }
 
@@ -506,18 +593,18 @@ section[data-testid="stSidebar"] * {
     gap: 0.5rem;
     padding: 0.55rem 0.85rem;
     border-radius: 999px;
-    border: 1px solid #bfdbfe;
-    background: #f8fbff;
-    color: #1e293b !important;
+    border: 1px solid var(--input-border);
+    background: color-mix(in srgb, var(--card) 80%, var(--bg-2) 20%);
+    color: var(--text-soft) !important;
     font-size: 0.93rem;
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
 .contact-pill:hover {
-    background: #eff6ff;
-    border-color: #93c5fd;
-    color: #1d4ed8 !important;
+    background: color-mix(in srgb, var(--card) 65%, var(--bg-2) 35%);
+    border-color: color-mix(in srgb, var(--accent-1) 40%, var(--input-border) 60%);
+    color: var(--accent-1) !important;
     transform: translateY(-1px);
 }
 </style>
