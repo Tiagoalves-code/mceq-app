@@ -789,7 +789,7 @@ with tab_tools:
             <span class="tooltip-icon">?
                 <span class="tooltiptext">
                 Represents the energy power with which the flux is multiplied,
-                highlighting features of the spectrum.
+                highlighting features of the spectrum. For better visualization of particle fluxes, we recommend a magnitude value of 3.
                 </span>
             </span>
         </div>
